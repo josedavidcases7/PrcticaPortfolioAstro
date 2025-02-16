@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const projects: CollectionEntry<"posts">[] = await getCollection("posts", () => true);
+---
+
+<section id="projects" class="py-8">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-center text-3xl md:text-4xl font-semibold mb-10 text-black dark:text-white">
+      Proyectos
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(({ data }) => (
+        <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
+          {data.image && (
+            <img 
+              class="rounded-t-lg w-full h-48 object-cover cursor-pointer" 
+              src={data.image} 
+              alt={data.title} 
+            />
+          )}
+          <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight cursor-pointer">
+              {data.title}
+            </h5>
+            <p class="mb-3 font-normal cursor-pointer">
+              {data.description}
+            </p>
+            <a
+              href="https://github.com/josedavidcases7?tab=repositories"
+              target="_blank"
+              class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-purple-400 dark:bg-purple-400 rounded-lg hover:bg-purple-500 dark:hover:bg-purple-500 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 cursor-pointer"
+            >
+              Ver en GitHub
+              <svg 
+                class="rtl:rotate-180 w-3.5 h-3.5 ml-2" 
+                aria-hidden="true" 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 14 10"
+              >
+                <path 
+                  stroke="currentColor" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

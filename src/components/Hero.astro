@@ -1,0 +1,24 @@
+---
+const profileImg = "/images/profile.jpg";
+---
+
+<section class="bg-white dark:bg-black text-black dark:text-white px-8 md:px-12 py-24 mt-24 min-h-[80vh]">
+  <div class="mx-auto max-w-7xl flex flex-col lg:flex-row-reverse items-center justify-between h-full">
+
+    <div class="w-full flex justify-center mb-8 lg:mb-0 lg:w-1/2">
+      <img 
+        src={profileImg} 
+        alt="Foto de perfil" 
+        class="w-72 h-72 md:w-[30rem] md:h-[30rem] lg:w-96 lg:h-96 object-cover rounded-full shadow-lg"
+      />
+    </div>
+
+
+    <div class="w-full lg:w-1/2 px-4 md:px-12">
+      <h1 class="text-3xl md:text-5xl lg:text-4xl font-bold mb-6 leading-tight">
+        Hola, soy <span class="text-purple-400 dark:text-purple-300">Jose David</span>, <span class="text-purple-400 dark:text-purple-300">desarrollador de aplicaciones web</span>.
+        Tengo una amplia formación en mantenimiento de sistemas y <span class="text-purple-400 dark:text-purple-300">testing</span>.
+      </h1>
+    </div>
+  </div>
+</section>

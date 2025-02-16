@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TechList from "../components/Techlist.astro";
+import Formacion from "../components/Formacion.astro";
+import Projects from "../components/Projects.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Hero />
+  <TechList />
+  <Formacion />
+
+  <div class="bg-gradient-to-b from-white to-purple-400 dark:bg-gradient-to-b dark:from-black dark:to-purple-700">
+    <Projects />
+    <Footer />
+  </div>
+</Layout>

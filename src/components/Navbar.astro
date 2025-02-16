@@ -1,0 +1,53 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="bg-black text-white fixed w-full top-0 z-50 shadow-md">
+  <div class="w-full flex items-center justify-between h-24 px-8">
+
+    <a href="/" class="text-xl md:text-2xl font-bold hover:text-gray-300">
+      Home
+    </a>
+    
+
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="#projects" class="text-xl md:text-2xl hover:text-gray-300">
+        Proyectos
+      </a>
+      <a href="#contact" class="text-xl md:text-2xl hover:text-gray-300">
+        Contacto
+      </a>
+      <ThemeToggle />
+    </div>
+    
+
+    <div class="md:hidden flex items-center space-x-2">
+      <ThemeToggle />
+      <button id="menu-toggle" class="p-2 text-2xl hover:text-gray-300 focus:outline-none cursor-pointer">
+        ☰
+      </button>
+    </div>
+  </div>
+  
+
+  <nav id="mobile-menu" class="hidden bg-black text-white p-6 space-y-4 text-center">
+    <a href="#projects" class="block text-xl hover:text-gray-300">
+      Proyectos
+    </a>
+    <a href="#contact" class="block text-xl hover:text-gray-300">
+      Contacto
+    </a>
+  </nav>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+    });
+  </script>
+</header>
