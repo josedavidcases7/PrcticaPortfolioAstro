@@ -1,44 +1,50 @@
-<button id="themeToggle" class="p-2 cursor-pointer">
-  <span id="icon-light" class="hidden">☀️</span>
-  <span id="icon-dark">🌙</span>
+---
+
+---
+
+<button id="themeToggle" aria-label="Toggle theme" class="flex items-center">
+  <img
+    class="sun w-12 h-12 md:w-14 md:h-14 lg:w-8 lg:h-8"
+    src="/images/sol-blanco.png"
+    alt="Modo Claro"
+  />
+  <img
+    class="moon w-8 h-8 md:w-10 md:h-10 lg:w-6 lg:h-6"
+    src="/images/luna-blanco.png"
+    alt="Modo Oscuro"
+  />
 </button>
 
-<script is:inline>
-  const theme = (() => {
-    const localStorageTheme = localStorage?.getItem("theme");
-    if (localStorageTheme === "dark" || (!localStorageTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      return "dark";
-    }
-    return "light";
-  })();
-
-  const button = document.getElementById("themeToggle");
-  const html = document.documentElement;
-  const iconLight = document.getElementById("icon-light");
-  const iconDark = document.getElementById("icon-dark");
-
-
-  if (theme === "light") {
-    html.classList.remove("dark");
-    iconLight.classList.remove("hidden");
-    iconDark.classList.add("hidden");
-  } else {
-    html.classList.add("dark");
-    iconLight.classList.add("hidden");
-    iconDark.classList.remove("hidden");
+<style>
+  .sun {
+    display: block;
   }
-  localStorage.setItem("theme", theme);
+  .moon {
+    display: none;
+  }
 
-  button.addEventListener("click", () => {
+  :global(.dark) .sun {
+    display: none;
+  }
+  :global(.dark) .moon {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+
+  function handleToggleClick() {
+    const html = document.documentElement;
     html.classList.toggle("dark");
-    if (html.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-      iconLight.classList.add("hidden");
-      iconDark.classList.remove("hidden");
-    } else {
-      localStorage.setItem("theme", "light");
-      iconLight.classList.remove("hidden");
-      iconDark.classList.add("hidden");
-    }
-  });
+    const isDark = html.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", handleToggleClick);
+  }
 </script>

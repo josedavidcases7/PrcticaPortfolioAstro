@@ -4,16 +4,24 @@ import Hero from "../components/Hero.astro";
 import TechList from "../components/Techlist.astro";
 import Formacion from "../components/Formacion.astro";
 import Projects from "../components/Projects.astro";
+import Formulario from "../components/Formulario.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-  <Hero />
-  <TechList />
-  <Formacion />
+  <div class="min-h-screen">
+    <div>
+      <Hero />
+      <TechList />
+      <Formacion />
+    </div>
 
-  <div class="bg-gradient-to-b from-white to-purple-400 dark:bg-gradient-to-b dark:from-black dark:to-purple-700">
-    <Projects />
-    <Footer />
+    <div
+      class="bg-gradient-to-t from-purple-400 via-purple-300/80 to-transparent dark:from-purple-900 dark:via-purple-900/50 dark:to-transparent"
+    >
+      <Projects />
+      <Formulario />
+      <Footer />
+    </div>
   </div>
 </Layout>
